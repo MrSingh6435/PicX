@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>uff</title>
+    <title>Tejay</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,6 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size: 3rem;
             color: #ffffff90;
-            ;
         }
 
         .pin-container {
@@ -120,19 +119,26 @@
         @media (min-width: 357px) and (max-width: 1000px) {
             body {
                 height: 90vh;
+                width: 100vw;
                 background: #876932;
             }
 
             .pin-form {
                 width: 50rem;
+                border-radius: 50px;
+                border: 6px solid black;
             }
 
             .pin-input {
-                font-size: 3rem;
+                font-size: 2rem;
+                height: 5rem;
             }
 
+
+
             .pin-button {
-                font-size: 3rem;
+                font-size: 2rem;
+                height: 5rem;
             }
 
             .outer-frame {
@@ -270,7 +276,8 @@
                 isMusicPlaying = true; // Update music state
             }
 
-            button.addEventListener('click', () => {
+            function handleFormSubmit(event) {
+                event.preventDefault(); // Prevent default form submission
                 const enteredPassword = input.value;
                 console.log('Entered PIN:', enteredPassword); // Debugging line
                 if (enteredPassword === pin) {
@@ -280,6 +287,30 @@
                     startSlideshowAndMusic(); // Start slideshow and music after PIN is correct
                 } else {
                     alert('Incorrect PIN. Please try again.');
+                }
+            }
+
+            // Listen for form submission (if there's a form element)
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+
+            // Handle "Enter" key press for form submission
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' && document.activeElement === input) {
+                    event.preventDefault(); // Prevent default form submission action
+                    handleFormSubmit(event); // Call the form submit handler
+                }
+
+                if (event.ctrlKey && event.key === 'm') {
+                    event.preventDefault(); // Prevent default action for Ctrl+M
+                    if (isMusicPlaying) {
+                        bgm.pause();
+                    } else {
+                        bgm.play();
+                    }
+                    isMusicPlaying = !isMusicPlaying; // Toggle music state
                 }
             });
 
@@ -306,59 +337,9 @@
 
             // Call the function on page load
             disableRightClickAndInspect();
-
-            // Add shortcut for toggling music play/pause
-            document.addEventListener('keydown', (event) => {
-                if (event.ctrlKey && event.key === 'm') {
-                    event.preventDefault(); // Prevent default action for Ctrl+M
-                    if (isMusicPlaying) {
-                        bgm.pause();
-                    } else {
-                        bgm.play();
-                    }
-                    isMusicPlaying = !isMusicPlaying; // Toggle music state
-                }
-            });
         });
 
     </script>
 </body>
 
 </html>
-
-
-<!-- // List of images for the slideshow
-            const images = [
-                'U.S/img (1)',
-                'U.S/img (2)',
-                'U.S/img (3)',
-                'U.S/img (4)',
-                'U.S/img (5)',
-                'U.S/img (6)',
-                'U.S/img (7)',
-                'U.S/img (8)',
-                'U.S/img (9)',
-                'U.S/img (10)',
-                'U.S/img (11)',
-                'U.S/img (12)',
-                'U.S/img (13)',
-                'U.S/img (14)',
-                'U.S/img (15)',
-                'U.S/img (16)',
-                'U.S/img (17)',
-                'U.S/img (18)',
-                'U.S/img (19)',
-                'U.S/img (20)',
-                'U.S/img (21)',
-                'U.S/img (22)',
-                'U.S/img (23)',
-                'U.S/img (24)',
-                'U.S/img (25)',
-                'U.S/img (26)',
-                'U.S/img (27)',
-                'U.S/img (28)',
-                'U.S/img (29)',
-                'U.S/img (30)',
-                'U.S/img (31)',
-                'U.S/img (32)'
-            ]; -->
