@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --outer-frame-color: #250000;
+    --mid-frame-color: #5f5e5e;
+    --photo-frame-color: #3a0505;
+    --photo-pad-color: #ffffff59;
+    --input-bg: rgb(255, 255, 255);
+}
+
+body {
+    background: #684c18;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.center {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: #ffffff90;
+}
+
+.pin-container {
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.pin-form {
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid black;
+    background: black;
+    border-radius: 24px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pin-input {
+    padding: 10px 12px 10px 12px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    background: white;
+    border: none;
+    outline: none;
+}
+
+.pin-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: brown;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.pin-button:hover {
+    background-color: #7a2020;
+}
+
+/* Photo fram */
+.outer-frame {
+    border: 10px solid var(--outer-frame-color);
+    height: 600px;
+    width: 1000px;
+    box-shadow: 10px 10px 30px 4px black;
+}
+
+.middle-frame {
+    height: 100%;
+    width: 100%;
+    border: 6px solid var(--mid-frame-color);
+}
+
+.inner-frame {
+    height: 100%;
+    width: 100%;
+    border: 10px solid var(--outer-frame-color);
+    box-shadow: 0px 0px 4px 2px black;
+}
+
+.photo-frame {
+    height: 100%;
+    width: 100%;
+    border: 20px solid var(--photo-frame-color);
+    box-shadow: 2px 2px 10px black;
+    background: var(--photo-pad-color);
+    padding: 30px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0px -510px;
+    object-position: 0px -482px;
+    transition: background-image 1s ease-in-out;
+    border: 1px solid #00000044;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+    body {
+        height: 90vh;
+        width: 100vw;
+        background: #876932;
+    }
+
+    .pin-form {
+        width: 50rem;
+        border-radius: 50px;
+    }
+
+    .pin-input {
+        font-size: 2rem;
+        height: 5rem;
+    }
+
+    .pin-button {
+        font-size: 2rem;
+        height: 5rem;
+    }
+
+    .outer-frame {
+        height: 60%;
+        width: 80%;
+    }
+
+    img {
+        object-position: 0px -300px;
+    }
+}
+
+@media (min-width: 357px) and (max-width: 900px) {
+    body {
+        height: 90vh;
+        width: 100vw;
+        background: #876932;
+    }
+
+    .center{
+        font-size: 1.5rem;
+    }
+
+    .pin-form {
+        width: 300px;
+        border-radius: 50px;
+    }
+    
+    .pin-input {
+        font-size: 1rem;
+        height: 100%;
+        background: var(--input-bg);
+    }
+    
+    .pin-button {
+        font-size: 1rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .outer-frame {
+        height: 60%;
+        width: 80%;
+        border: 5px solid var(--outer-frame-color);
+    }
+    
+    .middle-frame {
+        border: 5px solid var(--mid-frame-color);
+    }
+    
+    .inner-frame {
+        border: 5px solid var(--outer-frame-color);
+    }
+
+    .photo-frame{
+        border: 10px solid var(--photo-frame-color);
+        padding: 15px;
+    }
+
+    img {
+        object-position: center;
+    }
+}
