@@ -170,7 +170,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const pin = "M&U1623";
+            const pin = "HP100%";
             const input = document.getElementById('pin-input');
             const button = document.getElementById('pin-button');
             const pinContainer = document.querySelector('.pin-container');
@@ -191,38 +191,38 @@
 
             // List of images for the slideshow
             const images = [
-                'U.S/img (1).jpg',
-                'U.S/img (2).jpg',
-                'U.S/img (3).jpg',
-                'U.S/img (4).jpg',
-                'U.S/img (5).jpg',
-                'U.S/img (6).jpg',
-                'U.S/img (7).jpg',
-                'U.S/img (8).jpg',
-                'U.S/img (9).jpg',
-                'U.S/img (10).jpg',
-                'U.S/img (11).jpg',
-                'U.S/img (12).jpg',
-                'U.S/img (13).jpg',
-                'U.S/img (14).jpg',
-                'U.S/img (15).jpg',
-                'U.S/img (16).jpg',
-                'U.S/img (17).jpg',
-                'U.S/img (18).jpg',
-                'U.S/img (19).jpg',
-                'U.S/img (20).jpg',
-                'U.S/img (21).jpg',
-                'U.S/img (22).jpg',
-                'U.S/img (23).jpg',
-                'U.S/img (24).jpg',
-                'U.S/img (25).jpg',
-                'U.S/img (26).jpg',
-                'U.S/img (27).jpg',
-                'U.S/img (28).jpg',
-                'U.S/img (29).jpg',
-                'U.S/img (30).jpg',
-                'U.S/img (31).jpg',
-                'U.S/img (32).jpg'
+                'U.S/img (1)',
+                'U.S/img (2)',
+                'U.S/img (3)',
+                'U.S/img (4)',
+                'U.S/img (5)',
+                'U.S/img (6)',
+                'U.S/img (7)',
+                'U.S/img (8)',
+                'U.S/img (9)',
+                'U.S/img (10)',
+                'U.S/img (11)',
+                'U.S/img (12)',
+                'U.S/img (13)',
+                'U.S/img (14)',
+                'U.S/img (15)',
+                'U.S/img (16)',
+                'U.S/img (17)',
+                'U.S/img (18)',
+                'U.S/img (19)',
+                'U.S/img (20)',
+                'U.S/img (21)',
+                'U.S/img (22)',
+                'U.S/img (23)',
+                'U.S/img (24)',
+                'U.S/img (25)',
+                'U.S/img (26)',
+                'U.S/img (27)',
+                'U.S/img (28)',
+                'U.S/img (29)',
+                'U.S/img (30)',
+                'U.S/img (31)',
+                'U.S/img (32)'
             ];
 
             let currentIndex = 0;
@@ -265,10 +265,37 @@
             }
 
             // Initial image
-            changeImage();
+            //changeImage();
 
             // Change image every 5 seconds
             setInterval(changeImage, 5000);
+
+
+
+
+            function disableRightClickAndInspect() {
+                // Disable right-click
+                document.addEventListener('contextmenu', function (event) {
+                    event.preventDefault();
+                });
+
+                // Disable F12 and Ctrl+Shift+I (common shortcuts for developer tools)
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                        event.preventDefault();
+                    }
+                });
+
+                // Optional: Disable Ctrl+U (view source)
+                document.addEventListener('keydown', function (event) {
+                    if (event.ctrlKey && event.key === 'u') {
+                        event.preventDefault();
+                    }
+                });
+            }
+
+            // Call the function on page load
+            window.onload = disableRightClickAndInspect;
         });
 
     </script>
