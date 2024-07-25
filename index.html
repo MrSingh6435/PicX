@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uff</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(104, 76, 24);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .center {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.564);
+        }
+
+        .pin-container {
+            width: 60rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .pin-form {
+            width: 30rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid black;
+            background: black;
+            border-radius: 24px;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .pin-input {
+            padding: 10px 12px 10px 12px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border: none;
+            outline: none;
+        }
+
+        .pin-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: brown;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pin-button:hover {
+            background-color: rgb(122, 32, 32);
+        }
+
+        .outer-frame {
+            border: 10px solid rgb(37, 0, 0);
+            height: 600px;
+            width: 1000px;
+            box-shadow: 10px 10px 30px 4px black;
+        }
+
+        .middle-frame {
+            height: 100%;
+            width: 100%;
+            border: 6px solid rgb(95, 94, 94);
+        }
+
+        .inner-frame {
+            height: 100%;
+            width: 100%;
+            border: 10px solid rgb(37, 0, 0);
+            box-shadow: 0px 0px 4px 2px black;
+        }
+
+        .photo-frame {
+            height: 100%;
+            width: 100%;
+            border: 20px solid rgb(58, 5, 5);
+            box-shadow: 2px 2px 10px black;
+            background: rgba(255, 255, 255, 0.718);
+            padding: 30px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 0px -510px;
+            object-position: 0px -482px;
+            transition: background-image 1s ease-in-out;
+            border: 1px solid rgba(0, 0, 0, 0.268);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (min-width: 357px) and (max-width: 1000px) {
+            body {
+                height: 90vh;
+                background: rgb(135, 105, 50);
+            }
+
+            .pin-form {
+                width: 50rem;
+            }
+
+            .pin-input {
+                font-size: 3rem;
+            }
+
+            .pin-button {
+                font-size: 3rem;
+            }
+
+            .outer-frame {
+                height: 60%;
+                width: 80%;
+            }
+
+            .photo-frame {
+                padding: 60px 40px;
+            }
+
+            img {
+                object-position: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pin-container">
+        <h1 class="center">Enter the password to get access.</h1>
+        <form id="pin-form" class="pin-form">
+            <input type="password" id="pin-input" class="pin-input" placeholder="Enter password">
+            <button type="button" id="pin-button" class="pin-button">Submit</button>
+        </form>
+    </div>
+
+    <div class="outer-frame hidden">
+        <div class="middle-frame">
+            <div class="inner-frame">
+                <div class="photo-frame">
+                    <img id="slideshow-image" src="U.S/img (1).jpg" alt="Slideshow Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pin = "M&U1623";
+            const input = document.getElementById('pin-input');
+            const button = document.getElementById('pin-button');
+            const pinContainer = document.querySelector('.pin-container');
+            const main = document.querySelector('.outer-frame');
+
+            button.addEventListener('click', () => {
+                const enteredPassword = input.value;
+                console.log('Entered PIN:', enteredPassword); // Debugging line
+                if (enteredPassword === pin) {
+                    console.log('PIN correct'); // Debugging line
+                    pinContainer.classList.add('hidden');
+                    main.classList.remove('hidden');
+                    analyzeImage(); // Start image analysis after PIN is correct
+                } else {
+                    alert('Incorrect PIN. Please try again.');
+                }
+            });
+
+            // List of images for the slideshow
+            const images = [
+                'U.S/img (1).jpg',
+                'U.S/img (2).jpg',
+                'U.S/img (3).jpg',
+                'U.S/img (4).jpg',
+                'U.S/img (5).jpg',
+                'U.S/img (6).jpg',
+                'U.S/img (7).jpg',
+                'U.S/img (8).jpg',
+                'U.S/img (9).jpg',
+                'U.S/img (10).jpg',
+                'U.S/img (11).jpg',
+                'U.S/img (12).jpg',
+                'U.S/img (13).jpg',
+                'U.S/img (14).jpg',
+                'U.S/img (15).jpg',
+                'U.S/img (16).jpg',
+                'U.S/img (17).jpg',
+                'U.S/img (18).jpg',
+                'U.S/img (19).jpg',
+                'U.S/img (20).jpg',
+                'U.S/img (21).jpg',
+                'U.S/img (22).jpg',
+                'U.S/img (23).jpg',
+                'U.S/img (24).jpg',
+                'U.S/img (25).jpg',
+                'U.S/img (26).jpg',
+                'U.S/img (27).jpg',
+                'U.S/img (28).jpg',
+                'U.S/img (29).jpg',
+                'U.S/img (30).jpg',
+                'U.S/img (31).jpg',
+                'U.S/img (32).jpg'
+            ];
+
+            let currentIndex = 0;
+            const slideshowImage = document.getElementById('slideshow-image');
+
+            function changeImage() {
+                console.log(`Changing to: ${images[currentIndex]}`);
+                slideshowImage.src = images[currentIndex];
+                currentIndex = (currentIndex + 1) % images.length;
+                setTimeout(analyzeImage, 500); // Analyze new image after it loads
+            }
+
+            function analyzeImage() {
+                let img = new Image();
+                img.src = slideshowImage.src;
+                img.onload = () => {
+                    let canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    let ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    let avgColor = getAverageColor(imgData);
+                    document.body.style.backgroundColor = `rgb(${avgColor.r}, ${avgColor.g}, ${avgColor.b})`;
+                };
+            }
+
+            function getAverageColor(imgData) {
+                let r = 0, g = 0, b = 0;
+                let totalPixels = imgData.width * imgData.height;
+                for (let i = 0; i < imgData.data.length; i += 4) {
+                    r += imgData.data[i];
+                    g += imgData.data[i + 1];
+                    b += imgData.data[i + 2];
+                }
+                r = Math.floor(r / totalPixels);
+                g = Math.floor(g / totalPixels);
+                b = Math.floor(b / totalPixels);
+                return { r, g, b };
+            }
+
+            // Initial image
+            changeImage();
+
+            // Change image every 5 seconds
+            setInterval(changeImage, 5000);
+        });
+
+    </script>
+</body>
+
+</html>
