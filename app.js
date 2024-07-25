@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(changeImage, 5000);
 
         // Start background music
-        bgm.volume = 0.15;
+        bgm.volume = 0.25;
         bgm.play();
         isMusicPlaying = true; // Update music state
     }
