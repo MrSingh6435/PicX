@@ -13,7 +13,7 @@
         }
 
         body {
-            background: rgb(104, 76, 24);
+            background: #684c18;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -25,7 +25,8 @@
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 3rem;
-            color: rgba(255, 255, 255, 0.564);
+            color: #ffffff90;
+            ;
         }
 
         .pin-container {
@@ -54,6 +55,7 @@
             width: 100%;
             font-size: 16px;
             border: 1px solid #cccccc;
+            background: white;
             border: none;
             outline: none;
         }
@@ -68,11 +70,12 @@
         }
 
         .pin-button:hover {
-            background-color: rgb(122, 32, 32);
+            background-color: #7a2020;
+            ;
         }
 
         .outer-frame {
-            border: 10px solid rgb(37, 0, 0);
+            border: 10px solid #250000;
             height: 600px;
             width: 1000px;
             box-shadow: 10px 10px 30px 4px black;
@@ -81,22 +84,22 @@
         .middle-frame {
             height: 100%;
             width: 100%;
-            border: 6px solid rgb(95, 94, 94);
+            border: 6px solid #5f5e5e;
         }
 
         .inner-frame {
             height: 100%;
             width: 100%;
-            border: 10px solid rgb(37, 0, 0);
+            border: 10px solid #250000;
             box-shadow: 0px 0px 4px 2px black;
         }
 
         .photo-frame {
             height: 100%;
             width: 100%;
-            border: 20px solid rgb(58, 5, 5);
+            border: 20px solid #3a0505;
             box-shadow: 2px 2px 10px black;
-            background: rgba(255, 255, 255, 0.718);
+            background: #ffffffb7;
             padding: 30px;
         }
 
@@ -107,7 +110,7 @@
             object-position: 0px -510px;
             object-position: 0px -482px;
             transition: background-image 1s ease-in-out;
-            border: 1px solid rgba(0, 0, 0, 0.268);
+            border: 1px solid #00000044;
         }
 
         .hidden {
@@ -117,7 +120,7 @@
         @media (min-width: 357px) and (max-width: 1000px) {
             body {
                 height: 90vh;
-                background: rgb(135, 105, 50);
+                background: #876932;
             }
 
             .pin-form {
@@ -168,6 +171,10 @@
         </div>
     </div>
 
+    <audio id="bgm" loop>
+        <source src="/music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const pin = "HP100%";
@@ -175,19 +182,10 @@
             const button = document.getElementById('pin-button');
             const pinContainer = document.querySelector('.pin-container');
             const main = document.querySelector('.outer-frame');
-
-            button.addEventListener('click', () => {
-                const enteredPassword = input.value;
-                console.log('Entered PIN:', enteredPassword); // Debugging line
-                if (enteredPassword === pin) {
-                    console.log('PIN correct'); // Debugging line
-                    pinContainer.classList.add('hidden');
-                    main.classList.remove('hidden');
-                    analyzeImage(); // Start image analysis after PIN is correct
-                } else {
-                    alert('Incorrect PIN. Please try again.');
-                }
-            });
+            const slideshowImage = document.getElementById('slideshow-image');
+            const bgm = document.getElementById("bgm");
+            let isMusicPlaying = false; // Variable to track music state
+            let currentIndex = 0;
 
             // List of images for the slideshow
             const images = [
@@ -225,9 +223,6 @@
                 'U.S/img (32)'
             ];
 
-            let currentIndex = 0;
-            const slideshowImage = document.getElementById('slideshow-image');
-
             function changeImage() {
                 console.log(`Changing to: ${images[currentIndex]}`);
                 slideshowImage.src = images[currentIndex];
@@ -264,14 +259,29 @@
                 return { r, g, b };
             }
 
-            // Initial image
-            //changeImage();
+            function startSlideshowAndMusic() {
+                // Start slideshow
+                changeImage(); // Start slideshow after PIN is correct
+                setInterval(changeImage, 5000); // Change image every 5 seconds
 
-            // Change image every 5 seconds
-            setInterval(changeImage, 5000);
+                // Start background music
+                bgm.volume = 0.15;
+                bgm.play();
+                isMusicPlaying = true; // Update music state
+            }
 
-
-
+            button.addEventListener('click', () => {
+                const enteredPassword = input.value;
+                console.log('Entered PIN:', enteredPassword); // Debugging line
+                if (enteredPassword === pin) {
+                    console.log('PIN correct'); // Debugging line
+                    pinContainer.classList.add('hidden');
+                    main.classList.remove('hidden');
+                    startSlideshowAndMusic(); // Start slideshow and music after PIN is correct
+                } else {
+                    alert('Incorrect PIN. Please try again.');
+                }
+            });
 
             function disableRightClickAndInspect() {
                 // Disable right-click
@@ -295,10 +305,60 @@
             }
 
             // Call the function on page load
-            window.onload = disableRightClickAndInspect;
+            disableRightClickAndInspect();
+
+            // Add shortcut for toggling music play/pause
+            document.addEventListener('keydown', (event) => {
+                if (event.ctrlKey && event.key === 'm') {
+                    event.preventDefault(); // Prevent default action for Ctrl+M
+                    if (isMusicPlaying) {
+                        bgm.pause();
+                    } else {
+                        bgm.play();
+                    }
+                    isMusicPlaying = !isMusicPlaying; // Toggle music state
+                }
+            });
         });
 
     </script>
 </body>
 
 </html>
+
+
+<!-- // List of images for the slideshow
+            const images = [
+                'U.S/img (1)',
+                'U.S/img (2)',
+                'U.S/img (3)',
+                'U.S/img (4)',
+                'U.S/img (5)',
+                'U.S/img (6)',
+                'U.S/img (7)',
+                'U.S/img (8)',
+                'U.S/img (9)',
+                'U.S/img (10)',
+                'U.S/img (11)',
+                'U.S/img (12)',
+                'U.S/img (13)',
+                'U.S/img (14)',
+                'U.S/img (15)',
+                'U.S/img (16)',
+                'U.S/img (17)',
+                'U.S/img (18)',
+                'U.S/img (19)',
+                'U.S/img (20)',
+                'U.S/img (21)',
+                'U.S/img (22)',
+                'U.S/img (23)',
+                'U.S/img (24)',
+                'U.S/img (25)',
+                'U.S/img (26)',
+                'U.S/img (27)',
+                'U.S/img (28)',
+                'U.S/img (29)',
+                'U.S/img (30)',
+                'U.S/img (31)',
+                'U.S/img (32)'
+            ]; -->
