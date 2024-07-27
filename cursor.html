@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Styles</title>
+    <style>
+        .default-cursor {
+            cursor: default;
+        }
+
+        .pointer-cursor {
+            cursor: pointer;
+        }
+
+        .crosshair-cursor {
+            cursor: crosshair;
+        }
+
+        .text-cursor {
+            cursor: text;
+        }
+
+        .move-cursor {
+            cursor: move;
+        }
+
+        .not-allowed-cursor {
+            cursor: not-allowed;
+        }
+
+        .wait-cursor {
+            cursor: wait;
+        }
+
+        .help-cursor {
+            cursor: help;
+        }
+
+        .progress-cursor {
+            cursor: progress;
+        }
+
+        .resize-ns-cursor {
+            cursor: ns-resize;
+        }
+
+        .resize-ew-cursor {
+            cursor: ew-resize;
+        }
+
+        .resize-nesw-cursor {
+            cursor: nesw-resize;
+        }
+
+        .resize-nwse-cursor {
+            cursor: nwse-resize;
+        }
+
+        .custom-cursor {
+            cursor: url('path/to/custom-cursor.png'), auto;
+        }
+
+        .emoji-cursor-1 {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 50 50' style='font-size:24px;'><text x='0' y='24'>❤️</text></svg>"), auto;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+
+        .emoji-cursor-2 {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🦄</text></svg>")
+      16 0,
+    auto;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+
+        .heart-cursor {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🐧</text></svg>")
+      16 0, auto;
+            /* Replace with actual URL */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="default-cursor">Default Cursor</div>
+    <div class="pointer-cursor">Pointer Cursor</div>
+    <div class="crosshair-cursor">Crosshair Cursor</div>
+    <div class="text-cursor">Text Cursor</div>
+    <div class="move-cursor">Move Cursor</div>
+    <div class="not-allowed-cursor">Not Allowed Cursor</div>
+    <div class="wait-cursor">Wait Cursor</div>
+    <div class="help-cursor">Help Cursor</div>
+    <div class="progress-cursor">Progress Cursor</div>
+    <div class="resize-ns-cursor">Resize NS Cursor</div>
+    <div class="resize-ew-cursor">Resize EW Cursor</div>
+    <div class="resize-nesw-cursor">Resize NESW Cursor</div>
+    <div class="resize-nwse-cursor">Resize NWSE Cursor</div>
+    <div class="custom-cursor">Custom Cursor</div>
+    <div class="emoji-cursor-1">Hover over me to see emoji cursor 1</div>
+    <div class="emoji-cursor-2">Hover over me to see emoji cursor 2</div>
+    <div class="heart-cursor">
+        Hover over this text to see the heart-shaped cursor.
+    </div>
+</body>
+
+</html>
